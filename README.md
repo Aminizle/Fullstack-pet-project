@@ -29,10 +29,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Pet Project</h3>
 
   <p align="center">
-    project_description
+    Full stack application that uses authentication to create user accounts and lets the user manage pictures of pets.
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
@@ -82,14 +82,13 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
+* [Express](https://expressjs.com/)
+* [Node](https://nodejs.org)
+* [mongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
+* [Passport](https://www.passportjs.org)
+* [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
 * [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
