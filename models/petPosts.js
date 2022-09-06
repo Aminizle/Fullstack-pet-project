@@ -1,18 +1,26 @@
 const mongoose = require('mongoose')
 
 const PetSchema = new mongoose.Schema({
-  todo: {
+  CatDog: {
     type: String,
     required: true,
   },
-  completed: {
+  Like: {
     type: Boolean,
     required: true,
   },
   userId: {
     type: String,
     required: true
+  },
+  imageURL: {
+    type: String,
+    required: true
+  },
+  imageBreed: {
+    type: String,
+    required: true
   }
 })
 
-module.exports = mongoose.model('Todo', TodoSchema)
+module.exports = mongoose.model('Pet', PetSchema)

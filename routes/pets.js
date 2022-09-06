@@ -7,8 +7,6 @@ router.get('/', ensureAuth, PetsController.getPet)
 
 router.post('/createPet', PetsController.createPet)
 
-// router.put('/markComplete', PetsController.markComplete)
-
 router.get('/getChoice', PetsController.getChoice)
 
 router.delete('/deletePet', PetsController.deletePet)

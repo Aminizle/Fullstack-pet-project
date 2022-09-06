@@ -4,18 +4,17 @@ module.exports = {
     getPet: async (req, res) => {
         console.log(req.user)
         try {
-            const todoItems = await Pet.find({ userId: req.user.id })
-            // const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', { todos: todoItems, /*left: itemsLeft,*/ user: req.user })
+            const likedCats = await Pet.find({ imageURL: req.body.todoItem, imageBreed: req.body.breed, like: true, userId: req.user.id })
+            res.render('cat.ejs', { pets: likedCats, imageURL: req.body.todoItem, imageBreed: req.body.breed, user: req.user })
         } catch (err) {
             console.log(err)
         }
     },
     createPet: async (req, res) => {
         try {
-            await Pet.create({ todo: req.body.todoItem, /*completed: false,*/ userId: req.user.id })
+            await Pet.create({ imageURL: req.body.todoItem, imageBreed: req.body.breed, like: req.body.choice, userId: req.user.id })
             console.log('Pet photo has been added!')
-            res.redirect('/todos')
+            res.redirect('/cat.ejs')
         } catch (err) {
             console.log(err)
         }
