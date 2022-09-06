@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h3>You like?</h3>
+    <h3>You like?  </h3>
+    
     <h2 id="surprise"></h2>
-    <img src="" alt="" />
+    <img id="picture" src="" alt="" />
     <h3>Breed</h3>
     <p id="breed"></p>
     <h3>Learn More</h3>
@@ -25,23 +26,14 @@
     <ul>
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
+                
+                <img id='savepic' src="<%=el.picture %>" width="50" alt=""> 
+                <span ><%= el.breed %></span>
+                <span class='del'><b> Delete</b> </span>
             </li>
     <% }) %>    
     </ul>
-
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>    
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
-
     <a href="/logout">Logout</a>
-
-   
-
-
     <script src="js/main.js"></script>
 
 

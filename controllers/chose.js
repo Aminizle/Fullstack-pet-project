@@ -11,6 +11,7 @@ module.exports = {
         userId: req.user.id,
       });
       console.log("You have chosen!");
+      
       res.redirect("/todos");
     } catch (err) {
       console.log(err);

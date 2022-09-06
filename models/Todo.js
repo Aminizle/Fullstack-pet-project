@@ -6,7 +6,7 @@ const TodoSchema = new mongoose.Schema({
     required: true,
   },
 
-  more: {
+  picture: {
     type: String,
     required: true,
   },

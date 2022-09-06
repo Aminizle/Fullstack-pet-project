@@ -4,7 +4,6 @@ const todoComplete = document.querySelectorAll('span.completed')
 document.querySelector("#yes").addEventListener("click", like);
 document.addEventListener('DOMContentLoaded', getCat);
 document.querySelector("#no").addEventListener("click", alsoYes);
-
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTodo)
 })
@@ -13,9 +12,9 @@ Array.from(todoItem).forEach((el)=>{
     el.addEventListener('click', markComplete)
 })
 
-Array.from(todoComplete).forEach((el)=>{
-    el.addEventListener('click', markIncomplete)
-})
+// Array.from(todoComplete).forEach((el)=>{
+//     el.addEventListener('click', markIncomplete)
+// })
 
 async function deleteTodo(){
     const todoId = this.parentNode.dataset.id
@@ -35,44 +34,43 @@ async function deleteTodo(){
     }
 }
 
-async function markComplete(){
-    const todoId = this.parentNode.dataset.id
-    try{
-        const response = await fetch('todos/markComplete', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'todoIdFromJSFile': todoId
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
-    }
-}
+// async function markComplete(){
+//     const todoId = this.parentNode.dataset.id
+//     try{
+//         const response = await fetch('todos/markComplete', {
+//             method: 'put',
+//             headers: {'Content-type': 'application/json'},
+//             body: JSON.stringify({
+//                 'todoIdFromJSFile': todoId
+//             })
+//         })
+//         const data = await response.json()
+//         console.log(data)
+//         location.reload()
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
 
-async function markIncomplete(){
-    const todoId = this.parentNode.dataset.id
-    try{
-        const response = await fetch('todos/markIncomplete', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'todoIdFromJSFile': todoId
-            })
-        })
-        const data = await response.json()
-        console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
-    }
-}
+// async function markIncomplete(){
+//     const todoId = this.parentNode.dataset.id
+//     try{
+//         const response = await fetch('todos/markIncomplete', {
+//             method: 'put',
+//             headers: {'Content-type': 'application/json'},
+//             body: JSON.stringify({
+//                 'todoIdFromJSFile': todoId
+//             })
+//         })
+//         const data = await response.json()
+//         console.log(data)
+//         location.reload()
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
 
 // Selecting yes shows a cat
-
 
 
 let myHeaders = new Headers();
@@ -85,9 +83,7 @@ let requestOptions = {
   headers: myHeaders,
   redirect: "follow",
 };
-async function saveit(){
 
-}
 cat = {};
 
 // function to get random cat
@@ -120,21 +116,35 @@ function getCat() {
 
 // function to change no button
 function alsoYes() {
-  if (document.querySelector("#no").innerText !== "Yes") {
-    document.querySelector("#no").innerText = "Yes";
-  } else {
+//   if (document.querySelector("#no").innerText !== "Yes") {
+//     document.querySelector("#no").innerText = "Yes";
+//   } else {
     getCat();
-  }
+//   }
 }
 async function like(){
-     async (req, res)=>{
-        try{
-            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id})
-            console.log('Todo has been added!')
-            res.redirect('/todos')
-        }catch(err){
-            console.log(err)
-        }
+    const breed = document.querySelector("#breed").innerText
+    const picture = document.querySelector("#picture").src
+    console.log(picture)
+    try{
+        const response = await fetch('todos/createTodo', {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            
+            body: JSON.stringify({
+            'breed': breed,
+            'picture':picture
+
+                
+            })
+            
+        })
+        
+        
+        
+        location.reload()
+    }catch(err){
+        console.log(err)
     }
     getCat()
 }
