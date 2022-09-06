@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const TodoSchema = new mongoose.Schema({
+const PetSchema = new mongoose.Schema({
   todo: {
     type: String,
     required: true,
