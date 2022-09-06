@@ -1,18 +1,26 @@
 const mongoose = require("mongoose");
 
 const TodoSchema = new mongoose.Schema({
-  todo: {
+  breed: {
     type: String,
     required: true,
   },
-  completed: {
-    type: Boolean,
+
+  more: {
+    type: String,
     required: true,
   },
+
+  // completed: {
+  //   type: Boolean,
+  //   required: true,
+  // },
   userId: {
     type: String,
     required: true,
   },
 });
+
+
 
 module.exports = mongoose.model("Todo", TodoSchema);
