@@ -8,7 +8,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
+    <h3>You like?</h3>
+    <h2 id="surprise"></h2>
+    <img src="" alt="" />
+    <h3>Breed</h3>
+    <p id="breed"></p>
+    <h3>Learn More</h3>
+    <p id="more"></p>
+    
+    <h2> Click left to fav and right to skip?</h2>
+    <button type="button" id="yes">left</button>
+    <button type="button" id="no">right</button>
+
+
+    <h2><%= user.userName %> likes:</h2>
     <ul>
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
@@ -18,8 +31,7 @@
     <% }) %>    
     </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
+    <h2><%= user.userName %> has <%= left %> things left to do.</h2>    
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
         <input type="submit">
@@ -27,6 +39,12 @@
 
     <a href="/logout">Logout</a>
 
+   
+
+
     <script src="js/main.js"></script>
+
+
+    
 </body>
 </html>
