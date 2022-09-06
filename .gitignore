@@ -138,3 +138,6 @@ class37-materials/node-group/
 
 # ignore nodemon config
 nodemon.json
+
+Temp ignore
+README.md
