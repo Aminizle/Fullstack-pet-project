@@ -1,6 +1,9 @@
 const deleteBtn = document.querySelectorAll('.del')
 const todoItem = document.querySelectorAll('span.not')
 const todoComplete = document.querySelectorAll('span.completed')
+document.querySelector("#yes").addEventListener("click", like);
+document.addEventListener('DOMContentLoaded', getCat);
+document.querySelector("#no").addEventListener("click", alsoYes);
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteTodo)
@@ -66,4 +69,72 @@ async function markIncomplete(){
     }catch(err){
         console.log(err)
     }
+}
+
+// Selecting yes shows a cat
+
+
+
+let myHeaders = new Headers();
+
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("x-api-key", "4ea4d1dc-8099-4cce-8b44-3eab11217882");
+
+let requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+};
+async function saveit(){
+
+}
+cat = {};
+
+// function to get random cat
+function getCat() {
+  fetch("https://api.thecatapi.com/v1/images/search?has_breeds=1format=json", requestOptions)
+    .then((res) => res.json()) // parse response as JSON
+    .then((data) => {
+      console.log(data);
+      cat = data;
+      document.querySelector("img").src = data[0].url;
+      document.querySelector("img").width = "200"; 
+      headText = [
+        data[0].breeds[0].name,
+        data[0].breeds[0].wikipedia_url,
+      ];
+
+      for (i = 0; i < 2; i++) {
+        document.querySelectorAll("h3")[i].style.visibility = "visible";
+        document.querySelectorAll("p")[i].innerText = headText[i];
+      }
+      document.querySelectorAll("p")[1].innerHTML = `
+      <a href=${headText[1]}>${headText[1]}</a>`;
+     
+    })
+    
+    .catch((err) => {
+      console.log(`error ${err}`);
+    });
+}
+
+// function to change no button
+function alsoYes() {
+  if (document.querySelector("#no").innerText !== "Yes") {
+    document.querySelector("#no").innerText = "Yes";
+  } else {
+    getCat();
+  }
+}
+async function like(){
+     async (req, res)=>{
+        try{
+            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id})
+            console.log('Todo has been added!')
+            res.redirect('/todos')
+        }catch(err){
+            console.log(err)
+        }
+    }
+    getCat()
 }
