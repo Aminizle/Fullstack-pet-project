@@ -1,9 +1,9 @@
 const deleteBtn = document.querySelectorAll('.del')
-//const todoItem = document.querySelectorAll('span.not')
-//const todoComplete = document.querySelectorAll('span.completed')
+const todoItem = document.querySelectorAll('span.not')
+const todoComplete = document.querySelectorAll('span.completed')
 document.querySelector("#yes").addEventListener("click", like);
 document.addEventListener('DOMContentLoaded', getCat);
-document.querySelector("#no").addEventListener("click", dislike);
+document.querySelector("#no").addEventListener("click", alsoYes);
 
 
 Array.from(deleteBtn).forEach((el) => {
